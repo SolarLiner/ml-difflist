@@ -1,5 +1,8 @@
+(documentation)
+
 (library
  (name difflist)
+ (public_name difflist)
  (modules difflist)
  (inline_tests)
  (preprocess (pps ppx_inline_test)))
