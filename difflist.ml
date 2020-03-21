@@ -20,7 +20,7 @@ let empty = DList(fun xs -> xs)
 (** Singleton. ([snoc x] is [[x]]) *)
 let snoc x = DList(fun xs -> x::xs)
 
-(** Transformed singleton. ([snoct t x] is [[t x]]). Because of Lasy evaluation, the application of [t] on [x] is performed ONLY during the final conversion (see {!to_list}) 
+(** Transformed singleton. ([snoct t x] is [[t x]]). Because of Lasy evaluation, the application of [t] on [x] is performed ONLY during the final conversion (see {!to_list})
     @param  f   Transformation function
     @param  x   Element
 *)
@@ -57,6 +57,8 @@ let (<@) d l = append d (of_list l)
 
 (** [d <+ x] append an element (rights) to a difference list *)
 let (<+) d x = append d (snoc x)
+
+let (+>) x d = append (snoc x) d
 
 let map f =
   function DList fl -> DList(fun xs -> List.map f (fl xs))
